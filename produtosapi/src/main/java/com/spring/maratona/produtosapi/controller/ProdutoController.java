@@ -16,7 +16,8 @@ public class ProdutoController {
         this.produtoRepository = produtoRepository;
     }
 
-    @PostMapping // requisições POST
+    // Cadastra um produto
+    @PostMapping
     public Produto salvar(@RequestBody Produto produto) { // Anotação para receber Objeto JSON
         var id = UUID.randomUUID().toString();
         produto.setIdProduto(id);
@@ -24,6 +25,7 @@ public class ProdutoController {
         return produto;
     }
 
+    // Puxa a informação de um produto
     @GetMapping("/{id}") //
     public Produto buscarProdutosPorId(@PathVariable("id") String id) {
         return produtoRepository.findById(id).orElse(null);
@@ -34,12 +36,14 @@ public class ProdutoController {
         produtoRepository.deleteById(id);
     }
 
+    // Deleta um produto
     @PutMapping("/{id}")
     public void atualizarProduto(@PathVariable("id") String id,
                                  @RequestBody Produto produto){
         produto.setIdProduto(id);
         produtoRepository.save(produto);
     }
+
 
     @GetMapping
     public List<Produto> buscarProdutoPorNome(@RequestParam("nomeProduto") String nomeProduto) {

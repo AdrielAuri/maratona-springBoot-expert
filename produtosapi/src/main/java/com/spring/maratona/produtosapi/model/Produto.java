@@ -7,13 +7,11 @@ import jakarta.persistence.Table;
 
 // POJO -> Plain Old Java Object
 @Entity
-@Table(name = "produto")
-// serve para saber qual tabela do banco se refere a essa entidade e se o nome da tabela for o mesmo que essa entidade não precisa nomear
+@Table(name = "produto") // serve para saber qual tabela do banco se refere a essa entidade e se o nome da tabela for o mesmo que essa entidade não precisa nomear
 public class Produto {
 
     @Id
-    @Column(name = "idProduto")
-    // mapeia determinada coluna do banco para uma entidade e não é obrigatoria caso o nome seja igual.
+    @Column(name = "idProduto") // mapeia determinada coluna do banco para uma entidade e não é obrigatoria caso o nome seja igual.
     private String idProduto;
     private String nomeProduto;
     private String descricaoProduto;
